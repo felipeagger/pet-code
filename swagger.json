@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "pet-code API",
+    "description": "Desafio de codigo Backend NodeJS - Petlove",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Characters",
+      "description": "API for Characters in the system"
+    },
+    { 
+      "name": "Locations",
+      "description": "API for Locations in the system"
+    },
+    { 
+      "name": "Ranking",
+      "description": "API for Ranking in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+
+  "paths": {
+    "/characters": {      
+
+      "get": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Get all characters in system",
+        "responses": {
+          "200": {
+            "description": "Success!",
+            "schema": {
+              "$ref": "#/definitions/Characters"
+            }
+          }
+        }
+      },    
+
+      "post": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Get & Process Characters on Data Source",
+        "description":"This Requisition its slow, because get data of other API.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        }
+      }
+    },
+    
+
+    "/characters/{characterId}": {
+      "parameters": [
+        {
+          "name": "characterId",
+          "in": "path",
+          "required": true,
+          "description": "ID of character that we want to find",
+          "type": "string"
+        }
+      ],
+
+      "get": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Get character with given ID",
+        "responses": {
+          "200": {
+            "description": "Character is found",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "404": {
+            "description": "Character not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+
+    "/characters/filter/{characterName}": {
+      "parameters": [
+        {
+          "name": "characterName",
+          "in": "path",
+          "required": true,
+          "description": "Name exact of character that we want to find(case sensitive)",
+          "type": "string"
+        }
+      ],
+
+      "get": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Get character with given Name",
+        "responses": {
+          "200": {
+            "description": "Character is found",
+            "schema": {
+              "$ref": "#/definitions/Characters"
+            }
+          }
+        }
+      }
+    },
+
+
+
+
+    "/locations": {
+
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get all locations in system",
+        "responses": {
+          "200": {
+            "description": "Locations is found",
+            "schema": {
+              "$ref": "#/definitions/Locations"
+            }
+          }
+        }
+      },
+
+      "post": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get & Process Locations on Data Source",
+        "description":"This Requisition its slow, because get data of other API.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        }
+      }
+
+    },
+
+    "/locations/{locationId}": {
+      "parameters": [
+        {
+          "name": "locationId",
+          "in": "path",
+          "required": true,
+          "description": "ID of location that we want to find",
+          "type": "string"
+        }
+      ],
+
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get location with given ID",
+        "responses": {
+          "200": {
+            "description": "Location is found",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+
+    "/locations/filter/{locationName}": {
+      "parameters": [
+        {
+          "name": "locationName",
+          "in": "path",
+          "required": true,
+          "description": "Name contain of location that we want to find(case sensitive)",
+          "type": "string"
+        }
+      ],
+
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get location with given Name",
+        "responses": {
+          "200": {
+            "description": "Location is found",
+            "schema": {
+              "$ref": "#/definitions/Locations"
+            }
+          }
+        }
+      }
+    },
+
+    "/locations/ordered": {
+
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get All location Ordered by Name Desc",
+        "responses": {
+          "200": {
+            "description": "Locations is found",
+            "schema": {
+              "$ref": "#/definitions/Locations"
+            }
+          }
+        }
+      }
+    },
+
+
+
+    "/ranking": {
+
+      "get": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "Get all Ranking in system",
+        "responses": {
+          "200": {
+            "description": "Ranking is found",
+            "schema": {
+              "$ref": "#/definitions/Ranking"
+            }
+          }
+        }
+      },
+
+      "post": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "Process & Generate Ranking on Database",
+        "description":"This Requisition its slow, because process data of the database.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          }
+        }
+      }
+
+    }
+    
+  },
+
+  "definitions": {
+
+    "Character": {
+      "required": [        
+        "id",
+        "name"
+      ],
+
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "species": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "location":{
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          }
+        },
+        "origin":{
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          }
+        }
+        
+      }
+    },
+
+    "Characters": {
+      "type": "array",
+      "$ref": "#/definitions/Character"
+    },
+
+    "Location": {
+      "required": [        
+        "id",
+        "name"
+      ],
+
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "dimension": {
+          "type": "string"
+        },        
+        "residents":{
+          "type": "array",
+          "items": {
+            "type":"string"
+          }
+        }
+        
+      }
+    },
+
+    "Locations": {
+      "type": "array",
+      "$ref": "#/definitions/Location"
+    },
+
+    "Ranking": {
+      "required": [        
+        "character"
+      ],
+
+      "properties": {
+        "character": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "dimensions_count": {
+          "type": "integer"
+        },
+        "image": {
+          "type": "string"
+        }        
+      }
+    }
+  }
+}

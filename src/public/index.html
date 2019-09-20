@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PetCode</title>
+<h2>Petlove Challenge</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
+<style>	
+#ranking {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ranking td, #ranking th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ranking tr:nth-child(even){background-color: #f2f2f2;}
+
+#ranking tr:hover {background-color: #ddd;}
+
+#ranking th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6d4bdd;
+  color: white;
+}	
+</style>
+
+<script>
+
+  var app = angular.module("App", []);
+  
+   app.controller("Ctrl", async function($scope, $http, $timeout) {
+	  
+	  $scope.getData = function(){
+	  	  $http.get('/api/ranking').then(function(response){
+			
+			$scope.ranking = response.data; 		
+		  });
+
+		  $http.get('/api/characters/filter/Rick Sanchez').then(function(response){
+			
+			$scope.filtered = response.data; 		
+		  });
+
+		  $http.get('/api/locations/ordered').then(function(response){
+			
+			$scope.ordered = response.data; 		
+		  });
+	  };
+	  
+	});
+	
+</script>
+
+</head>
+<body>
+ 
+  
+  <div ng-app="App" ng-controller="Ctrl" ng-init="getData()">
+	
+	<a href="/api-docs">API Documentation</a> 
+
+	<h5>Attention: The first time, wait 2 minutes, because the API will be processing the data. (F5 for Reload).</h5>
+
+	<h3>Characters Filtered by Name equals "Rick Sanchez"</h3> 
+	
+	<table class="table" id="ranking" >
+	  <tr>
+	  <th>Name</th>
+	  <th>Location</th>	  
+	  </tr>
+	  
+	   <tbody ng-repeat="i in filtered">
+	  
+	      <tr>
+			 <td>{{i.name}}</td>
+			 <td>{{i.location.name}}</td>
+          </tr>
+		  
+	  </tbody>	   
+		  
+	</table>
+
+	<br>
+	<a href="/api/characters/filter/Rick Sanchez">Clique aqui para visualizar o retorno da API.</a>
+
+	<br><br>
+
+	<h3>Ranking</h3> 
+
+	<div class="form-group">
+	<input type="text" class="form-control" placeholder="Filter Character" id="filter" ng-model="search.character">
+    </div>
+	<br>
+
+	<table class="table" id="ranking" >
+	  <tr>
+	  <th>Character</th>
+	  <th>Dimensions Count</th>
+      <th>Image</th>	  
+	  </tr>	  
+	   <tbody ng-repeat="i in ranking | filter:search">	  
+	      <tr>
+			 <td>{{i.character}}</td>
+			 <td>{{i.dimensions_count}}</td>
+			 <td>{{i.image}}</td>
+          </tr>		  
+	  </tbody>	  		  
+	</table>
+
+	<br>
+	<a href="/api/ranking">Clique aqui para visualizar o retorno da API.</a>
+	
+	<br><br>
+
+	<h3>Locations Ordered by Name Desc</h3> 
+	
+	<table class="table" id="ranking" >
+	  <tr>
+	  <th>Id</th>
+	  <th>Location</th>
+	  <th>Dimension</th>	  
+	  </tr>
+	  
+	   <tbody ng-repeat="i in ordered">
+	  
+	      <tr>
+			 <td>{{i.id}}</td> 
+			 <td>{{i.name}}</td>
+			 <td>{{i.dimension}}</td>
+          </tr>
+		  
+	  </tbody>	   
+		  
+	</table>
+
+	<br>
+	<a href="/api/locations/ordered">Clique aqui para visualizar o retorno da API.</a>
+
+
+  	<br><br>
+
+  </div>
+  
+  
+</body>
+</html>

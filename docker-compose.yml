@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  server:
+    container_name: Pet-Love
+    build: '.'
+    environment:
+      PORT: 8080
+      MONGO: db
+      MONGO_PASSWD: toor
+      MONGO_BD: petlove
+      NODE_ENV: production
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - '8080:8080'
+
+  db:
+    image: 'mongo'
+    restart: always
+    container_name: MongoDB
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
+      MONGO_INITDB_DATABASE: petlove
+    ports:
+      - "27017:27017"
+    volumes:
+      - /var/docker/mongo/data:/data/db
