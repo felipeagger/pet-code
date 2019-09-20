@@ -22,18 +22,16 @@ Comandos Vagrant (execute na raiz do projeto):
 ```  
   Acessar a VM via SSH:  vagrant ssh
   Desligar VM:           vagrant halt
-  Excluir VM:            vagrant destroy -f 
-  
+  Excluir VM:            vagrant destroy -f   
 ```
 Lembrando que para usar com Vagrant sera necessario de 3GB RAM livre.
 
 
-#Subir a Aplicacao com Docker:
+# Subir a Aplicacao com Docker:
   Acesse a raiz do projeto e rode: 
   
 ```  
-  ./dockerup.sh
-  
+  ./dockerup.sh  
 ```
 
   Parar a Aplicacao: docker-compose down
@@ -43,12 +41,11 @@ Lembrando que para usar com Vagrant sera necessario de 3GB RAM livre.
   sudo mkdir -p /var/docker/mongo/data && chmod -R a+rwx /var/docker/mongo/data
 
 
-#Subir a Aplicacao na Maquina Fisica:
+# Subir a Aplicacao na Maquina Fisica:
   Acesse a raiz do projeto e rode: 
   
 ```  
-  ./appstart.sh 
-  
+  ./appstart.sh   
 ```  
 
 
@@ -66,13 +63,14 @@ No Navegador acesse: http://localhost:8080/
 
 Aplicacao Nodejs versão 10: Porta 8080;
  
-MongoDB: Porta 27017; 
+MongoDB: localhost:27017; 
 - Usuario: root 
 - Senha:   toor 
 
-VM iniciará como private network (host-only) Com IP: 192.168.1.10;
+Vagrant:
+  VM iniciará como private network (host-only) Com IP: 192.168.1.10; 
 
-#Frameworks Utilizadas
+# Frameworks Utilizadas
 
 - Nodejs com Express, Axios(Requisições Http), Mongoose(MongoDB), Jest(TDD) e Swagger(Documentacao).
 
@@ -84,7 +82,7 @@ VM iniciará como private network (host-only) Com IP: 192.168.1.10;
 
 
 
-#Links e Observações
+# Links e Observações
 
 Para Utilizar Vagrant é necessario ter instalado:
 
