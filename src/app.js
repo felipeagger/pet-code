@@ -40,7 +40,7 @@ if (process.env.NODE_ENV != 'test'){
 
     setTimeout(function () {
         ConectDB();    
-    }, 3000);
+    }, 5000);
 
 } else {
     ConectDB();
