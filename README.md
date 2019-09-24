@@ -78,9 +78,9 @@ Vagrant:
 
 - PORT; (Porta para Nodejs ouvir - Padrao 8080);
 
-- MONGO; (IP:PORTA para Node Conectar ao Mongo - Padrao = 192.168.1.10:27017);
-
-
+- MONGO; (IP:PORTA para Node Conectar ao Mongo);
+Vagrant: 192.168.1.10:27017
+Docker ou Local: 127.0.0.1:27017
 
 # Links e Observações
 
@@ -98,7 +98,7 @@ Para Utilizar Docker é necessario ter instalado:
 ```  
   Docker: https://www.docker.com/
 
-  VirtualBox: https://docs.docker.com/compose/
+  Docker-Compose: https://docs.docker.com/compose/
   
 ```  
 
