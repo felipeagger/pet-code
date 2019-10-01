@@ -1,4 +1,4 @@
-# Pet-Code Challenge
+# Pet-Code Challenge (Nodejs)
 
 # Objetivos
 
@@ -15,9 +15,9 @@ Express, Mongoose, Axios(Requisições HTTP), Jest e Swagger-UI(Documentacao).
 
 Express: É o microframework mais utilizados para APIs em Nodejs.
 
-MongoDB: É um Banco NoSQL orientado a Documento(JSON).
+MongoDB: É o Banco NoSQL orientado a Documento(JSON) mais utilizado.
 
-Jest: É um dos melhor framework de testes em python.
+Jest: É um dos melhores framework de testes em Nodejs.
 
 Swagger-UI: É uma ferramente que permite a criacao de documentacao de API's, seguindo os padroes da "OpenAPI Initiative".
 
