@@ -1,6 +1,27 @@
 # Pet-Code Challenge
 
-Requisitos :
+# Objetivos
+
+API que fornece algumas informações sobre os personagens "Rick and Morty". A API retorna um ranking dos personagens que mais tem mais versões diferentes dele em outros universos, base dos personagens para integração([https://rickandmortyapi.com]).
+
+EndPoints: 
+- Personagens: Listar, exibir, filtrar, processar.
+- Localizações: Listar, exibir, filtrar, processar, listar ordenadamente.
+- Ranking: Listar, processar.
+
+# Libraries Utilizadas
+
+Express, Mongoose, Axios(Requisições HTTP), Jest e Swagger-UI(Documentacao).
+
+Express: É o microframework mais utilizados para APIs em Nodejs.
+
+MongoDB: É um Banco NoSQL orientado a Documento(JSON).
+
+Jest: É um dos melhor framework de testes em python.
+
+Swagger-UI: É uma ferramente que permite a criacao de documentacao de API's, seguindo os padroes da "OpenAPI Initiative".
+
+# Requisitos :
 
 Deixar as Porta 8080 e 27017 do seu host local livre, pois serão essas portas que a aplicacão/mongodb ira executar.
 
